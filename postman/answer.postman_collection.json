@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "72342084-2cd9-417d-9553-97c61cddd4ae",
+		"name": "QA Summer School 2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28249474"
+	},
+	"item": [
+		{
+			"name": "Задание 2.1 Создать новый заказ в магазине",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    let responseData=pm.response.json();\r",
+							"    pm.collectionVariables.set(\"orderId\", responseData.id);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{$randomInt}},\r\n    \"petId\": 9,\r\n    \"quantity\": 1,\r\n    \"shipDate\": \"{{$isoTimestamp}}\",\r\n    \"status\": \"placed\",\r\n    \"complete\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{domainPetstore}}/v2/store/order",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.2 Получить данные этого заказа",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{domainPetstore}}/v2/store/order/:id",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{orderId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.3 Удалить заказ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{domainPetstore}}/v2/store/order/:id",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{orderId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.4 Создать питомца",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    var response = pm.response.json();\r",
+							"\r",
+							"    pm.collectionVariables.set(\"petId\", pm.response.json().id);\r",
+							"    pm.test('Новый питомец Id = ' + pm.collectionVariables.get(\"petId\"))\r",
+							"\r",
+							"    var schema={\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"            \"id\": {\r",
+							"                \"type\": [\r",
+							"                    \"integer\",\r",
+							"                    null\r",
+							"                ]\r",
+							"            },\r",
+							"            \"category\": {\r",
+							"                \"type\": \"object\",\r",
+							"                \"properties\": {\r",
+							"                    \"id\": {\r",
+							"                        \"type\": [\r",
+							"                            \"integer\",\r",
+							"                            null\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"name\": {\r",
+							"                        \"type\": [\r",
+							"                            \"string\",\r",
+							"                            null\r",
+							"                        ]\r",
+							"                    }\r",
+							"                }\r",
+							"            },\r",
+							"            \"name\": {\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"photoUrls\": {\r",
+							"                \"type\": \"array\",\r",
+							"                \"items\": [\r",
+							"                    {\r",
+							"                        \"type\": [\r",
+							"                            \"string\",\r",
+							"                            null\r",
+							"                        ]\r",
+							"                    }\r",
+							"                ]\r",
+							"            },\r",
+							"            \"tags\": {\r",
+							"                \"type\": \"array\",\r",
+							"                \"items\": [\r",
+							"                    {\r",
+							"                        \"type\": \"object\",\r",
+							"                        \"properties\": {\r",
+							"                            \"id\": {\r",
+							"                                \"type\": [\r",
+							"                                    \"integer\",\r",
+							"                                    null\r",
+							"                                ]\r",
+							"                            },\r",
+							"                            \"name\": {\r",
+							"                                \"type\": [\r",
+							"                                    \"string\",\r",
+							"                                    null\r",
+							"                                ]\r",
+							"                            }\r",
+							"                        },\r",
+							"                        \"required\": [\r",
+							"                            \"id\",\r",
+							"                            \"name\"\r",
+							"                        ]\r",
+							"                    }\r",
+							"                ]\r",
+							"            },\r",
+							"            \"status\": {\r",
+							"                \"type\": [\r",
+							"                    \"string\",\r",
+							"                    null\r",
+							"                ]\r",
+							"            }\r",
+							"        },\r",
+							"        \"required\": [\r",
+							"            \"name\",\r",
+							"            \"photoUrls\"\r",
+							"        ]\r",
+							"    };\r",
+							"\r",
+							"var result = tv4.validateMultiple(response, schema, true, true);\r",
+							"\r",
+							"if (result.valid){\r",
+							"    pm.test ('Все поля корректны'), setTestStatus;\r",
+							"} else {\r",
+							"    for (var i = 0; i < result.errors.length; i++) {\r",
+							"        pm.test('Ошибка в поле: ${result.errors[i].dataPath} ${result.errors[i].message}',setTestStatus);\r",
+							"    }\r",
+							"}\r",
+							"function setTestStatus() {\r",
+							"    pm.expect(result.valid).to.be.true;\r",
+							"}\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{$randomInt}},\r\n    \"category\": {\r\n        \"id\": 13,\r\n        \"name\": \"small dog\"\r\n    },\r\n    \"name\": \"Лакки\",\r\n    \"photoUrls\": [\r\n        \"string\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 55,\r\n            \"name\": \"Маленькая, красивая собачка\"\r\n        }\r\n    ],\r\n    \"status\": \"available\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domainPetstore}}/v2/pet",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.5 Найти питомца по статусу",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{domainPetstore}}/v2/pet/findByStatus?status=available",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "available"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.6 Изменить питомца",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{petId}},\r\n    \"category\": {\r\n        \"id\": 13,\r\n        \"name\": \"small dog\"\r\n    },\r\n    \"name\": \"Бобик\",\r\n    \"photoUrls\": [\r\n        \"string\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 55,\r\n            \"name\": \"Маленькая, красивая собачка\"\r\n        }\r\n    ],\r\n    \"status\": \"pending\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domainPetstore}}/v2/pet",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.7 Удалить питомца",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{domainPetstore}}/v2/pet/:id",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"pet",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{petId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Задание 2.8 Проверить, что питомец действительно удален из БД",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{domainPetstore}}/v2/pet/:id",
+					"host": [
+						"{{domainPetstore}}"
+					],
+					"path": [
+						"v2",
+						"pet",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{petId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "petId",
+			"value": ""
+		}
+	]
+}
