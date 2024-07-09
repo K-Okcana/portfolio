@@ -9,4 +9,4 @@ https://miro.com/app/board/uXjVNHWNP5Q=/?share_link_id=903592636994
 # Чек лист, Тест-кейс, Баг репорт
 https://drive.google.com/drive/folders/1vPDcXD8D28dTXurrSzo3LS0myoCLLw5H?usp=drive_link
 
-# SQL
+

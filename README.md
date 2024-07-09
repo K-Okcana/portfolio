@@ -13,6 +13,9 @@
 
 ## Freelance
 
+### Платформа Сфера
+[Баг репорты и комментарии](bug-reports/sfera/)
+
 ### АвтоПрофи55
 [Репозиторий](https://github.com/K-Okcana/autoprofi/blob/main/README.md)
 
