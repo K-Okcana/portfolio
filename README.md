@@ -54,3 +54,8 @@
 #### Web
 
 [Houston](web/README.md)
+
+## Тестовые задания
+[Задание 1](test_task/test_task_1.pdf)
+
+[Задание 2](test_task/test_task_2.pdf)
