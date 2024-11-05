@@ -10,11 +10,13 @@
 
 [Проект Центр спортивных волонтеров](https://github.com/K-Okcana/Lad-volunteers/blob/main/README.md)
 
+[Проект IT-аналитика](https://github.com/K-Okcana/Lad-IT_analytics/blob/main/README.md)
+
 
 ## Freelance
 
 ### Платформа Сфера
-[Баг репорты и комментарии](bug-reports/sfera/)
+[Баг-репорты и комментарии](bug-reports/sfera/)
 
 ### АвтоПрофи55
 [Репозиторий](https://github.com/K-Okcana/autoprofi/blob/main/README.md)
@@ -22,7 +24,7 @@
 ### Непоседа
 [Mind map](https://miro.com/app/board/uXjVNHWNP5Q=/)
 
-[Чек лист, Тест-кейс, Баг репорт](https://drive.google.com/drive/folders/1vPDcXD8D28dTXurrSzo3LS0myoCLLw5H?usp=drive_link)
+[Чек-лист, Тест-кейс, Баг репорт](https://drive.google.com/drive/folders/1vPDcXD8D28dTXurrSzo3LS0myoCLLw5H?usp=drive_link)
 
 ### Фруктовый мастер
 
@@ -30,6 +32,11 @@
 
 
 ## Обучение
+
+### Открытая Школа Тестировщиков Т1
+[Задание](bug-reports/posuda-plus74/exercise.PNG)
+
+[Баг-репорты](https://docs.google.com/spreadsheets/d/1zYPqFlErgIdgsc613aK5QAH6hDqPa15vgbR8MAHybaw/edit?usp=drive_link)
 
 ### QA Summer School Surf
 [Автоматизация тестирования мобильного приложения на Flutter](https://github.com/K-Okcana/surfstudio-qa-summer-school-23/pull/1/files)
@@ -59,3 +66,5 @@
 [Задание 1](test_task/test_task_1.pdf)
 
 [Задание 2](test_task/test_task_2.pdf)
+
+[Задание 3](test_task/triangle_testing.png)
